@@ -5,7 +5,7 @@ class RNASolution:
 
     # lendo a sequência do dna
     def readDnaSeq(self):
-        with open('../input/rosalind_rna.txt', 'r') as input_data:
+        with open('C:\Programming\Rosalind\input/rosalind_rna.txt', 'r') as input_data:
             self.dna = input_data.read()
             input_data.close()
 
@@ -25,7 +25,7 @@ class RNASolution:
     def getRnaSeq(self):
         rna = self.transcribingDnaToRna()
 
-        with open('../output/RNA.txt', 'w') as output_data:
+        with open('C:\Programming\Rosalind\output/RNA.txt', 'w') as output_data:
             output_data.write(rna)
             output_data.close()
 

@@ -8,7 +8,7 @@ class DNASolution:
 
     # lendo a sequência do dna
     def readDnaSeq(self):
-        with open('../input/rosalind_dna.txt', 'r') as input_data:
+        with open('C:\Programming\Rosalind\input/rosalind_dna.txt', 'r') as input_data:
             self.dna = input_data.read()
             input_data.close()
 
@@ -22,7 +22,7 @@ class DNASolution:
     def numberDnaBases(self):
         bases = list(self.dnaBases.values())
 
-        with open('../output/DNA.txt', 'w') as output_data:
+        with open('C:\Programming\Rosalind\output\DNA.txt', 'w') as output_data:
             for amount in bases:
                 output_data.write(f"{amount: <5}")
             output_data.close()
