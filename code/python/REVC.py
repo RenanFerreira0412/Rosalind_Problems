@@ -37,4 +37,5 @@ class REVCSolution:
 
 
 if __name__ == "__main__":
-    REVCSolution().get_reverse_complement()
+    solution = REVCSolution()
+    solution.get_reverse_complement()

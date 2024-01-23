@@ -31,4 +31,5 @@ class RNASolution:
 
 
 if __name__ == "__main__":
-    RNASolution().getRnaSeq()
+    solution = RNASolution()
+    solution.getRnaSeq()

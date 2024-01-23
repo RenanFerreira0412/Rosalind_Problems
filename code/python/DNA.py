@@ -23,10 +23,10 @@ class DNASolution:
         bases = list(self.dnaBases.values())
 
         with open('C:\Programming\Rosalind\output\DNA.txt', 'w') as output_data:
-            for amount in bases:
-                output_data.write(f"{amount: <5}")
+            output_data.write(' '.join(map(str, bases)))
             output_data.close()
 
 
 if __name__ == "__main__":
-    DNASolution().numberDnaBases()
+    solution = DNASolution()
+    solution.numberDnaBases()
