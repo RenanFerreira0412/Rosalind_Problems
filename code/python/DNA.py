@@ -1,32 +1,42 @@
+import os
+
+
 class DNASolution:
     def __init__(self):
         self.dna = None
-        self.dnaBases = {'A': 0, 'C': 0, 'G': 0, 'T': 0}
+        self.dna_bases = {'A': 0, 'C': 0, 'G': 0, 'T': 0}
 
-        self.readDnaSeq()
-        self.countDnaBases()
+        self.read_dna_seq()
+        self.count_dna_bases()
 
     # lendo a sequência do dna
-    def readDnaSeq(self):
-        with open('C:\Programming\Rosalind\input/rosalind_dna.txt', 'r') as input_data:
-            self.dna = input_data.read()
+    def read_dna_seq(self):
+        try:
+            path = os.path.realpath("../../input/rosalind_dna.txt")
+            input_data = open(path, 'r')
+            self.dna = input_data.read().strip()
             input_data.close()
+        except IOError:
+            print("Erro na leitura do arquivo!")
 
     # contando a qtd. de cada base (A, C, G, T)
-    def countDnaBases(self):
+    def count_dna_bases(self):
         for base in self.dna:
-            if base in self.dnaBases:
-                self.dnaBases[base] += 1
+            self.dna_bases[base] += 1
 
     # resultado da qtd. de cada base
-    def numberDnaBases(self):
-        bases = list(self.dnaBases.values())
+    def number_dna_bases(self):
+        bases = list(self.dna_bases.values())
 
-        with open('C:\Programming\Rosalind\output\DNA.txt', 'w') as output_data:
+        try:
+            path = os.path.realpath("../../output/DNA.txt")
+            output_data = open(path, 'w')
             output_data.write(' '.join(map(str, bases)))
             output_data.close()
+        except IOError:
+            print("Erro na escrita do arquivo!")
 
 
 if __name__ == "__main__":
     solution = DNASolution()
-    solution.numberDnaBases()
+    solution.number_dna_bases()

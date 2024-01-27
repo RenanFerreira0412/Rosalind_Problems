@@ -1,39 +1,52 @@
+import os
+
+
 class REVCSolution:
     def __init__(self):
         self.dna = None
-        self.dnaReverseComplSeq = ""
+        self.dna_reverse_compl_seq = ""
         self.read_dna_seq()
 
     # lendo a sequência do dna
     def read_dna_seq(self):
-        with open('C:\Programming\Rosalind\input/rosalind_revc.txt', 'r') as input_data:
-            self.dna = input_data.read()
+        try:
+            path = os.path.realpath("../../input/rosalind_revc.txt")
+            input_data = open(path, 'r')
+            self.dna = input_data.readline().strip()
             input_data.close()
+
+        except IOError:
+            print("Erro na leitura do arquivo!")
 
     # inverter sequência
     def reverse(self, complement):
-        reverseComp = ""
+        reverse_comp = ""
         for i in range(len(complement)-1, -1, -1):
-            reverseComp += complement[i]
-        return reverseComp
+            reverse_comp += complement[i]
+        return reverse_comp
 
     # definir complemento
     def set_complement(self):
         pairs = {'A': 'T', 'T': 'A', 'C': 'G', 'G': 'C'}
 
-        dnaComplementSeq = ""
+        dna_complement_seq = ""
         for base in self.dna:
-            if base in pairs:
-                dnaComplementSeq += pairs[base]
+            dna_complement_seq += pairs[base]
 
-        self.dnaReverseComplSeq = self.reverse(dnaComplementSeq)
+        self.dna_reverse_compl_seq = self.reverse(dna_complement_seq)
 
     # gerando a saída
     def get_reverse_complement(self):
         self.set_complement()
-        with open('C:\Programming\Rosalind\output/REVC.txt', 'w') as output_data:
-            output_data.write(self.dnaReverseComplSeq)
+
+        try:
+            path = os.path.realpath("../../output/REVC.txt")
+            output_data = open(path, 'w')
+            output_data.write(self.dna_reverse_compl_seq)
             output_data.close()
+
+        except IOError:
+            print("Erro na escrita do arquivo!")
 
 
 if __name__ == "__main__":

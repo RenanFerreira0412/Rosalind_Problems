@@ -1,29 +1,45 @@
+import os
+
+
 class HAMMSolution:
     def __init__(self):
         self.dna_seq_one = None
         self.dna_seq_two = None
-        self.hamming_distance = 0
+        self.distance = 0
+
         self.read_dna_seq()
+        self.get_hamming_distance()
 
     # lendo as sequências de DNA
     def read_dna_seq(self):
-        with open("C:/Programming/Rosalind/input/rosalind_hamm.txt", 'r') as input_data:
+        try:
+            path = os.path.realpath("../../input/rosalind_hamm.txt")
+            input_data = open(path, 'r')
             lines = input_data.readlines()
             self.dna_seq_one = lines[0].strip()
             self.dna_seq_two = lines[1].strip()
             input_data.close()
+        except IOError:
+            print("Erro na leitura do arquivo!")
 
     # calculando a distância
     def get_hamming_distance(self):
         for base_one, base_two in zip(self.dna_seq_one, self.dna_seq_two):
             if base_one != base_two:
-                self.hamming_distance += 1
+                self.distance += 1
 
-        with open("C:\Programming\Rosalind\output/HAMM.txt", 'w') as output_data:
-            output_data.write(f"{self.hamming_distance}")
+    # distância
+    def hamming_distance(self):
+        try:
+            path = os.path.realpath("../../output/HAMM.txt")
+            output_data = open(path, 'w')
+            output_data.write(f"{self.distance}")
             output_data.close()
+
+        except IOError:
+            print("Erro na escrita do arquivo!")
 
 
 if __name__ == "__main__":
     solution = HAMMSolution()
-    solution.get_hamming_distance()
+    solution.hamming_distance()
