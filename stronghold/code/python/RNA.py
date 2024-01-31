@@ -30,7 +30,7 @@ class RNASolution:
         return rna
 
     # sequência rna
-    def getRnaSeq(self):
+    def get_rna_seq(self):
         rna = self.transcribing_dna_to_rna()
 
         try:
@@ -45,4 +45,4 @@ class RNASolution:
 
 if __name__ == "__main__":
     solution = RNASolution()
-    solution.getRnaSeq()
+    solution.get_rna_seq()
